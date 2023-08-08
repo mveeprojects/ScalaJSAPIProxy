@@ -1,0 +1,45 @@
+html {
+
+    width: 100%;
+    height: 100%;
+}
+
+body {
+
+    overflow:hidden;
+}
+
+.linear-gradient-design-bottom-left {
+
+    background-image: linear-gradient(to bottom left, #66ffff, #ff66ff);
+}
+
+.linear-gradient-design-top-right {
+
+    background-image: linear-gradient(to top right, #66ffff, #ff66ff);
+}
+
+.display-none {
+
+    display:none
+}
+
+.column-flex-container {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.full-width-height {
+
+    width: 100%;
+    height: 100%;
+}
+
+#container > button {
+
+    margin: auto;
+    font-size: xx-large;
+    background-color: white;
+}
