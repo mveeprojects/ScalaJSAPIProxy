@@ -1,5 +1,7 @@
 # ScalaJSAPIProxy
 
+The idea of this project is to learn ScalaJS and eventually create an application that runs as a UI to proxy calls to an externally-hosted JSON API, and then render the results of this (JSON) to the user.
+
 ## JVM
 
 Execute code using the below
