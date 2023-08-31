@@ -1,21 +1,39 @@
 import Dependencies._
-import sbtcrossproject.CrossPlugin.autoImport.{crossProject => sbtCrossProject}
 
-ThisBuild / version := "0.1.0-SNAPSHOT"
-
+ThisBuild / organization := "mveeprojects"
 ThisBuild / scalaVersion := "2.13.11"
+ThisBuild / version      := "0.1.0-SNAPSHOT"
 
 lazy val root = (project in file("."))
-  .aggregate(crossProjectJS, crossProjectJVM)
+  .aggregate(server, client, shared.jvm, shared.js)
+
+lazy val server = project
   .settings(
-    name := "ScalaJSAPIProxy"
+    scalaJSProjects := Seq(client),
+    Assets / pipelineStages  := Seq(scalaJSPipeline),
+    pipelineStages := Seq(digest, gzip),
+    // triggers scalaJSPipeline when using compile or continuous compilation
+    Compile / compile := ((Compile / compile) dependsOn scalaJSPipeline).value,
+    libraryDependencies += guice,
+    libraryDependencies += scalaJsScripts
   )
+  .enablePlugins(PlayScala)
+  .dependsOn(shared.jvm)
 
-lazy val crossProject = sbtCrossProject(JSPlatform, JVMPlatform).in(file("."))
+lazy val client = project
+  .settings(
+    scalaJSUseMainModuleInitializer := true,
+    libraryDependencies += scalaJsDom.value
+  )
+  .enablePlugins(ScalaJSPlugin, ScalaJSWeb)
+  .dependsOn(shared.js)
 
-lazy val crossProjectJVM = crossProject.jvm
-
-lazy val crossProjectJS = crossProject.js.settings(
-  libraryDependencies ++= Seq(js.scalaJsDom.value),
-  crossTarget in fastOptJS := baseDirectory.value / "src/main/resources/web/scala-js"
-)
+lazy val shared = crossProject(JSPlatform, JVMPlatform)
+  .crossType(CrossType.Pure)
+  .settings(
+    libraryDependencies += circeCore.value,
+    libraryDependencies += circeParser.value,
+    libraryDependencies += circeGeneric.value
+  )
+  .in(file("shared"))
+  .jsConfigure(_.enablePlugins(ScalaJSWeb))
