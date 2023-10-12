@@ -8,3 +8,7 @@ The idea of this project is to learn ScalaJS and eventually create an applicatio
 * [ScalaJS Plugin](https://www.scala-js.org/doc/project/)
 * [CrossProject Plugin](https://github.com/portable-scala/sbt-crossproject)
 * [Knoldus blog - intro to Scala JS](https://blog.knoldus.com/introduction-to-scala-js/)
+
+### Future Improvements
+
+* [ScalaJS-React](https://github.com/japgolly/scalajs-react)
