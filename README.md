@@ -2,6 +2,10 @@
 
 The idea of this project is to learn ScalaJS and eventually create an application that runs as a UI to proxy calls to an externally-hosted JSON API, and then render the results of this (JSON) to the user.
 
+### Running the app
+
+`sbt "project server" run` -> http://localhost:9000
+
 ### Sources
 
 * [Based on this Play ScalaJs Giter8](https://github.com/vmunier/play-scalajs.g8)
