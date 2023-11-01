@@ -4,6 +4,7 @@
 
 # Home page
 GET        /                             com.example.playscalajs.controllers.Application.index
+GET        /hello/:name                   com.example.playscalajs.controllers.GreetingController.hello(name, trueorfalse: Boolean)
 
 # Prefix must match `play.assets.urlPrefix`
 GET        /assets/*file                 controllers.Assets.at(file)

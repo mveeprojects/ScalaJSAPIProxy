@@ -4,7 +4,7 @@ ThisBuild / organization := "mveeprojects"
 ThisBuild / scalaVersion := "2.13.11"
 ThisBuild / version      := "0.1.0-SNAPSHOT"
 
-lazy val root = (project in file("."))
+lazy val scalaJSAPIProxy = (project in file("."))
   .aggregate(server, client, shared.jvm, shared.js)
 
 lazy val server = project
