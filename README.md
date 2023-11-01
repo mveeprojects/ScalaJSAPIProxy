@@ -6,6 +6,8 @@ The idea of this project is to learn ScalaJS and eventually create an applicatio
 
 `sbt "project server" run` -> http://localhost:9000
 
+Greeting endpoint example -> http://localhost:9000/hello/mark?trueorfalse=false
+
 ### Sources
 
 * [Based on this Play ScalaJs Giter8](https://github.com/vmunier/play-scalajs.g8)
